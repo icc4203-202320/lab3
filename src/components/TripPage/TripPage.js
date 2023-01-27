@@ -1,13 +1,18 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import {Box, Container, Paper} from "@mui/material";
+import {Box, Container, Paper, Stack, styled} from "@mui/material";
 import SpinnerOfDoom from "../HomePage/SpinnerOfDoom";
 import {useLocation} from "react-router-dom";
 import "./TripPage.css";
 
 
+const Item = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.primary,
 
+}));
 
 
 function TripPage(props, {trip}) {
@@ -51,6 +56,13 @@ function TripPage(props, {trip}) {
 
     return (
         <Box className={"GroupStack2"} sx={{ mx: 2 }}>
+            <Stack
+                direction="column"
+                justifyContent="flex-start"
+                alignItems="center"
+                spacing={2}
+            >
+            <Item className={"TripCard"} sx={{bgcolor: 'background.paper' }}>
             <Paper className={"PaperTrip"}>
                 <Container sx={{ mx: 2 }}>
                     <h3>{data.trip.name}</h3>
@@ -62,7 +74,7 @@ function TripPage(props, {trip}) {
 
                 </Container>
             </Paper>
-
+            </Item>
             <React.Fragment>
 
 
@@ -86,7 +98,7 @@ function TripPage(props, {trip}) {
 
             </React.Fragment>
 
-
+            </Stack>
         </Box>
 
     );

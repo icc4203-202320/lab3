@@ -5,6 +5,7 @@
   -moz-osx-font-smoothing: grayscale;
   color: rgba(0, 0, 0, 0.8500);
   background-color: #8debfb;
+  height: calc((100%) - 55px);
 }
 
 .App__content{

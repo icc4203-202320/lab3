@@ -27,12 +27,11 @@ function TopNav(props) {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
-            sx={{ width:'100%' }}
         >
-        <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg"  />
-          <p className={"AppName"}>Travel Log</p>
-        </Button>
+        <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" left={0} position={"absolute"}/>
 
+        </Button>
+        <p className={"AppName"}>Travel Log</p>
         <Menu
             id="profile-menu"
             spacing={2}
