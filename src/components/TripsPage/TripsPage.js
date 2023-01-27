@@ -3,9 +3,9 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import TripCard from "./TripCard/TripCard";
 import './TripsPage.css';
-import {Box, Container, CssBaseline, Paper, Stack, styled} from "@mui/material";
-import Grid2 from "@mui/material/Unstable_Grid2";
+import {Paper, Stack, styled} from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
+import {generatePath, useNavigate} from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(2),
@@ -37,6 +37,9 @@ query {
 function TripsPage(props, {email}) {
     const { loading, error, data } = useQuery(GET_DATA);
 
+    const navigate = useNavigate();
+
+
     if (loading) return  <CircularProgress />;
     if (error) return <h1>Error: {error.message}</h1>;
 
@@ -49,13 +52,14 @@ function TripsPage(props, {email}) {
             justifyContent="flex-start"
             alignItems="center"
             spacing={2}
-            sx={{ mx: 2 , mt: '85px'}}
+            sx={{ mx: 2 , mt: '90px'}}
         >
             <React.Fragment>
 
 
                 {data?.user?.trips?.map((trip) => (
-                    <Item key={trip.id}>
+
+                    <Item key={trip.id}  trip={trip} onClick={()=>navigate(generatePath('./:trip_id', {trip_id: trip.id}))}>
                         <TripCard  trip={trip} />
                     </Item>
 

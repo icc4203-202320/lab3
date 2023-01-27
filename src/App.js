@@ -12,6 +12,7 @@ import HomePage from "./components/HomePage/HomePage";
 import FriendsPage from "./components/FriendsPage/FriendsPage";
 import MapPage from "./components/MapPage/MapPage";
 import SearchPage from "./components/SearchPage/SearchPage";
+import TripPage from "./components/TripPage";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
                   <Routes>
                       <Route exact path="/" element={<HomePage />} />
                       <Route exact path="/trips" element={<TripsPage />} />
+                      <Route exact path="/trips/:trip_id" element={<TripPage />} />
                         <Route exact path="/friends" element={<FriendsPage />} />
                         <Route exact path="/map" element={<MapPage />} />
                         <Route exact path="/search" element={<SearchPage />} />

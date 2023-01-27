@@ -1,20 +1,8 @@
-.Stack {
-    overflow-y: scroll;
-    top: 85px;
-    left: 1px;
-    width: 100%;
-    height: calc(100% - 85px - 50px);
-    position: absolute;
-    background-color: #E6E6E6;
-    flex-direction: column;
-    display: flex;
-}
-
 .Group {
     top: 96px;
-    left: 0px;
+    left: 0;
     width: 374px;
-    height: 1409px;
+    height: calc((100%) - 55px);
     position: absolute;
     flex-direction: column;
     justify-content: space-between;
@@ -22,23 +10,8 @@
 
 }
 
-.LoremIpsum1 {
-    font-family: Alegreya, sans-serif;
-    top: 0px;
-    left: 21px;
-    position: absolute;
-    font-style: normal;
-    font-weight: 300;
-    color: #121212;
-    line-height: 30px;
-    right: 20px;
-    font-size: 35px;
-    text-align: center;
-}
-
 .GroupStack {
-    height: auto;
-    min-height: 100%;
+    height: calc((100%) - 55px);
     margin-top: 0;
     margin-bottom: 55px;
     flex: 0 0 auto;
