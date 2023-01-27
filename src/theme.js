@@ -10,6 +10,9 @@ const theme = createTheme({
         secondary: {
             main: '#4db6ac',
         },
+        warning: {
+            main: '#0470a6',
+        },
         background: {
             default: '#5e5e5e',
             paper: '#4a4949',
@@ -17,8 +20,8 @@ const theme = createTheme({
         error: {
             main: '#f44336',
         },
-        alternate: {
-            main: '#0470a6',
+        info: {
+            main: 'rgba(162, 250, 163, 0.5)',
         }
 
 

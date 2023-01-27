@@ -46,13 +46,10 @@ function TripPage(props, {trip}) {
 
 
     let start = new Date(data.trip.startDate);
-    let end;
-    if (data.trip.endDate) {
-        end = new Date(data.trip.endDate);
-    }
-    else{
-        end = new Date("1969-4-20");
-    }
+    let end = new Date(data.trip.endDate);
+    let today = new Date();
+
+    let destinations = new Set(data.trip.destinations);
 
     return (
         <Box className={"GroupStack2"} sx={{ mx: 2 }}>
@@ -67,9 +64,17 @@ function TripPage(props, {trip}) {
                 <Container sx={{ mx: 2 }}>
                     <h3>{data.trip.name}</h3>
                     <h4>{data.trip.description}</h4>
-                    <h6 >This trip started: {start.getDay() + "/" + start.getMonth() + "/" + start.getFullYear()}</h6>
-                    {end.getFullYear() === 1969 ? <h6>This trip is still ongoing</h6> :
-                        <h6>This trip ended: {end.getDay() + "/" + end.getMonth() + "/" + end.getFullYear()}</h6>}
+                    {today < start ? <><h4>Upcoming</h4>
+                        <h6 >This trip starts: {start.getDay() + "/" + start.getMonth() + "/" + start.getFullYear()}</h6></> :
+                    today > start && today < end ? <><h4>Ongoing</h4>
+                        <h6 >This trip started: {start.getDay() + "/" + start.getMonth() + "/" + start.getFullYear()}</h6></> :
+                        <>
+                            <h6 >This trip started: {start.getDay() + "/" + start.getMonth() + "/" + start.getFullYear()}</h6>
+                            <h6>And ended: {end.getDay() + "/" + end.getMonth() + "/" + end.getFullYear()}</h6>
+                        </>   }
+
+
+
 
 
                 </Container>
@@ -79,21 +84,22 @@ function TripPage(props, {trip}) {
 
 
 
-            {data.trip.destinations.map((destination) => (
+            {(Array.from(destinations).map((destination) => (
 
-                <Paper className={"PaperDestination"}>
+                <Paper key={destination.id} className={"PaperDestination"}>
                     <Container sx={{ mx: 2 }}>
 
 
-                <div key={destination.id}>
+                <div >
                     <h3>{destination.name}</h3>
-                    <h4>{destination.country}</h4>
-                    <h5>{destination.city}</h5>
+                    <h4>{destination.city}</h4>
+                    <h5>{destination.country}</h5>
+
                 </div>
 
                     </Container>
                 </Paper>
-            ))}
+            )))}
 
 
             </React.Fragment>

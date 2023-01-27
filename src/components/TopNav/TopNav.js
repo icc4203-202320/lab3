@@ -27,6 +27,7 @@ function TopNav(props) {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
+            sx={{ position: 'absolute', top: '16px', right: '16px' }}
         >
         <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" left={0} position={"absolute"}/>
 
