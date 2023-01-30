@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+// import AnimatedFAB from 'material-ui-animated-fab'
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import TripCard from "./TripCard/TripCard";
 import './TripsPage.css';
-import {Paper, Stack, styled} from "@mui/material";
+import {Fab, Grow, Paper, Stack, styled} from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 import CircularProgress from "@mui/material/CircularProgress";
 import {generatePath, useNavigate} from "react-router-dom";
+import { useScrollDirection } from 'react-use-scroll-direction'
 
 const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(2),
@@ -36,6 +39,32 @@ query {
 
 function TripsPage(props, {email}) {
     const { loading, error, data } = useQuery(GET_DATA);
+    const [extended, setExtended] = useState(true);
+    const [newtrip, setNewTrip] = useState(true);
+
+    const { isScrollingUp, isScrollingDown } = useScrollDirection()
+
+    let ext = extended ? "extended" : "circular";
+    let nt = newtrip ? 'New Trip': "";
+
+
+    useEffect(() =>
+    {
+        const handleScroll = () => {
+        if (isScrollingUp) {
+            setExtended(true);
+            setNewTrip(true);
+        }
+        if (isScrollingDown) {
+            setExtended(false);
+            setNewTrip(false);
+
+        }};
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [isScrollingUp, isScrollingDown])
+
 
     const navigate = useNavigate();
 
@@ -46,16 +75,29 @@ function TripsPage(props, {email}) {
 
     return (
         <>
-        <div className={"GroupStack"}>
+        <div className={"GroupStack"} >
+
+
+                <Fab color="primary" aria-label="add" className={"NewTripFab"} id={"NewTrip"} variant={ext}>
+                <AddIcon /> <div id={"NewTripText"} >{nt}</div>
+            </Fab>
+
+
+
+
+
         <Stack
             direction="column"
             justifyContent="flex-start"
             alignItems="center"
             spacing={2}
+            overflow={"scroll"}
             sx={{ mx: 2 , mt: '90px'}}
-        >
-            <React.Fragment>
 
+
+        >
+
+            <React.Fragment>
 
                 {data?.user?.trips?.map((trip) => (
 

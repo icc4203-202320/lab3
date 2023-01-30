@@ -20,19 +20,19 @@ function TopNav(props) {
   return (
       <Box className={"BoxNav"}>
       <Container sx={{ width: '100%' , height: '85px', position: 'fixed', top: 0, left: 0 }}>
-
+        <p className={"AppName"}>Travel Log</p>
         <Button
             id="profile-button"
             aria-controls={open ? 'profile-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
-            sx={{ position: 'absolute', top: '16px', right: '16px' }}
+            sx={{ position: 'absolute', top: '16px', left: '16px' }}
         >
         <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" left={0} position={"absolute"}/>
 
         </Button>
-        <p className={"AppName"}>Travel Log</p>
+
         <Menu
             id="profile-menu"
             spacing={2}
