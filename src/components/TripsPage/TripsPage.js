@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-// import AnimatedFAB from 'material-ui-animated-fab'
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import TripCard from "./TripCard/TripCard";
 import './TripsPage.css';
-import {Fab, Grow, Paper, Stack, styled} from "@mui/material";
+import {Fab, Paper, Stack, styled} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import CircularProgress from "@mui/material/CircularProgress";
 import {generatePath, useNavigate} from "react-router-dom";
@@ -78,13 +77,9 @@ function TripsPage(props, {email}) {
         <div className={"GroupStack"} >
 
 
-                <Fab color="primary" aria-label="add" className={"NewTripFab"} id={"NewTrip"} variant={ext}>
+            <Fab color="primary" aria-label="add" className={"NewTripFab"} id={"NewTrip"} variant={ext}>
                 <AddIcon /> <div id={"NewTripText"} >{nt}</div>
             </Fab>
-
-
-
-
 
         <Stack
             direction="column"
@@ -101,7 +96,7 @@ function TripsPage(props, {email}) {
 
                 {data?.user?.trips?.map((trip) => (
 
-                    <Item key={trip.id}  trip={trip} onClick={()=>navigate(generatePath('./:trip_id', {trip_id: trip.id}))}>
+                    <Item key={trip.id}  trip={trip} >
                         <TripCard  trip={trip} />
                     </Item>
 
