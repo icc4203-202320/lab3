@@ -23,10 +23,6 @@ const theme = createTheme({
         info: {
             main: 'rgba(162, 250, 163, 0.5)',
         }
-
-
-
-
     },
 });
 

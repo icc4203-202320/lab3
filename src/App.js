@@ -15,28 +15,24 @@ import SearchPage from "./components/SearchPage/SearchPage";
 
 
 function App() {
-
-
-
-  return (
-
-      <div className="App">
-          <HashRouter>
-          <div className="App__content">
-              <TopNav />
-                  <Routes>
-                      <Route exact path="/" element={<HomePage />} />
-                      <Route exact path="/trips" element={<TripsPage />} />
+    return (
+        <div className="App">
+            <HashRouter>
+                <div className="App__content">
+                    <TopNav />
+                    <Routes>
+                        <Route exact path="/" element={<HomePage />} />
+                        <Route exact path="/trips" element={<TripsPage />} />
                         <Route exact path="/friends" element={<FriendsPage />} />
                         <Route exact path="/map" element={<MapPage />} />
                         <Route exact path="/search" element={<SearchPage />} />
                     </Routes>
-          </div>
-          <BottomBar />
-      </HashRouter>
-      </div>
+                </div>
+                <BottomBar />
+            </HashRouter>
+        </div>
 
-  );
+    );
 }
 
 export default App;

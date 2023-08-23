@@ -18,7 +18,6 @@ display: flex;
   margin-bottom: 55px;
 }
 
-
 .App .baseFont * { /* Base font style override for UI framework components */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   font-size: 16.0px;
@@ -528,8 +527,6 @@ display: flex;
   position: relative;
 }
 
-
-
 /* Narrowest size for this element's responsive layout */
 .TripsPageScreen > .screenFgContainer > .foreground > .elComp {
   position: absolute;
@@ -578,7 +575,6 @@ display: flex;
   }
 
 }
-
 
 /* Narrowest size for this element's responsive layout */
 .Screen2 > .background > .elBackground {
