@@ -26,16 +26,15 @@ const authLink = setContext((_, {headers}) => {
 });
 
 const hostname = window.location.hostname;
-let serverUrl;
+const baseUrl = `http://${hostname}:9090/`
+let gqlUrl = `${baseUrl}/api/v1/graphql`;
 
-serverUrl = `http://${hostname}:9090/api/v1/graphql`;
-
-const httpLink = createHttpLink({
-    uri: serverUrl,
+const gqlHTTPLink = createHttpLink({
+    uri: gqlUrl,
 });
 
 const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link: authLink.concat(gqlHTTPLink),
     cache: new InMemoryCache({
     },),
 });
