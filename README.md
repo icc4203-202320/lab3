@@ -108,7 +108,7 @@ Pueden entregar su trabajo hasta el domingo 3/9 a las 23:59 hrs.
 ## Referencias
 
 * Álvarez, C. (2023). ICC 4203 Aplicaciones Móviles, Clase 4. Disponible en Canvas.
-* Wieruch, R. (2023). The Road to Reach. Disponible en sitio del curso.
+* Wieruch, R. (2023). The Road to React. Disponible en sitio del curso.
 * MUI - Getting Started (s.f.). Disponible en https://mui.com/material-ui/getting-started/
 * React Router (s.f.). Disponible en https://reactrouter.com/en/main 
 
