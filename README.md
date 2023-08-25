@@ -99,6 +99,8 @@ Para las cargas asíncronas de objetos desde el backend, hay un componente llama
 
 Deben realizar _commit_ de todo su trabajo al presente repositorio, generado desde enlace de GitHub classroom. Si requieren un nuevo repositorio, deben contactar al profesor guía (calvarez@uandes.cl). 
 
+Pueden entregar su trabajo hasta el domingo 3/9 a las 23:59 hrs. 
+
 ## Referencias
 
 * Álvarez, C. (2023). ICC 4203 Aplicaciones Móviles, Clase 4. Disponible en Canvas.
