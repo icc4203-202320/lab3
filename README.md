@@ -37,6 +37,8 @@ Para React existe una biblioteca llamada `react-router`. Esta biblioteca provee 
 
 En este proyecto usamos `HashRouter` debido a lo último relativo a a simplicidad de la configuración. 
 
+Para navegar programáticamente desde una página a otra, existe un hook del módulo `react-router-dom` llamado [`useNavigate`](https://reactrouter.com/en/main/hooks/use-navigate), el cual permite esto. 
+
 ## Estilos de CSS
 
 En `App.css` están definidos los estilos personalizados que son aplicados a los componentes de la aplicación. Se puede ver que contenedores y elementos de navegación se ajustan a un RWD usando _media queries_. Sin embargo, no hay trato especial con base la orientación del dispositivo móvil vertical u horizontal, sino que sólo se considera el ancho de la vista.
@@ -49,9 +51,11 @@ En este proyecto, podrán modificar los estilos de CSS, y ajustarlos para que la
 
 MUI ofrece una amplia variedad de componentes predefinidos, desde botones y tarjetas hasta diálogos y barras de navegación. Estos componentes están diseñados según los principios de Material Design, pero son altamente personalizables. La personalización se logra a través de temas, estilos y otras utilidades proporcionadas por MUI.
 
-MUI tiene un sistema robusto de _theming_ que permite definir un diseño coherente y estilizado para tu aplicación. Con el sistema de _theming_, puedes especificar colores, tipos de letra y otras propiedades visuales de tu aplicación de manera centralizada.
+MUI tiene un sistema robusto de [_theming_](https://mui.com/material-ui/customization/theming/) que permite definir un diseño coherente y estilizado para tu aplicación. Con el sistema de _theming_, puedes especificar colores, tipos de letra y otras propiedades visuales de tu aplicación de manera centralizada.
 
-MUI incluye un sistema de cuadrícula flexible que facilita la creación de diseños responsivos. Por otro lado, MUI puede integrarse fácilmente con otras bibliotecas de React y herramientas como formularios, validación, animaciones, entre otras.
+Si vas a `index.js` verás que el componente `App` es creado en el ámbito de un _theme_. La personalización del _theme_ está presente en el módulo que define `theme.js`. Evidentemente, puedes personalizar el _theme_ de la aplicación si no te gusta la paleta original (que no fue elegida por el profesor guía, btw).
+
+MUI incluye un sistema de cuadrícula flexible que facilita la creación de diseños responsivos. Por otro lado, MUI puede integrarse fácilmente con otras bibliotecas de React y herramientas como formularios, validación, animaciones, entre otras. Los componentes básicos de layout son Box, Container, Grid, Stack, Image List y Hidden (ver aquí [más información](https://mui.com/material-ui/react-box/)).
 
 Finalmente, una de las fortalezas de MUI es su documentación detallada. Cada componente está bien documentado con ejemplos, propiedades y variaciones.
 
@@ -64,6 +68,8 @@ $ npm install # instala todos los paquetes especificados en `packages.json`
 $ npm start 
 ```
 
+La primera vez, la aplicación tardará en levantarse, es normal.
+
 El puerto por omisión es `3000`, el cual es de hecho el mismo puerto que utiliza el backend de Rails en modo de desarrollo. Si necesitas usar otro puerto para servir el frontend, puedes probar con:
 
 ```sh
@@ -72,7 +78,9 @@ $ PORT=7890 npm start # Se usa variable de entorno PORT con valor para el puerto
 
 Además, debes tener en ejecución (desde una copia local de su repositorio) la aplicación de _backend_. Puedes ejecutar la aplicación de _backend_ en modo producción o desarrollo, definiendo correctamente en `index.js` la variable `baseUrl` (línea 29).
 
-Luego de esto, puedes abrir un navegador web y acceder a http://localhost:PUERTO
+El comando `npm start` automáticamente debería abrir tu navegador web apuntando a la URL correcta. Si esto no ocurre, puedes abrir un navegador web y acceder a http://localhost:PUERTO.
+
+Inicialmente verás el renderizado del componente `HomePage`, el cual es instanciado dentro de `App`. El elemento raiz es instanciado y configurado en `index.js`.
 
 ## Vamos a la acción
 
@@ -82,7 +90,7 @@ Con base a lo anterior, los aspectos a desarrollar en esta entrega son los sigui
 
 1.[3.0] Interfaz de login para inicio de sesión. Deberás implementar un componente, por ejemplo, `LoginPage` que permita al usuario iniciar sesión. Este componente deberá contener un formulario en donde el usuario pueda ingresar su correo electrónico y su contraseña. El formulario deberá contar con validación, y usar componentes de MUI para implementar su interfaz de usuario. Además, para conectar con endpoint de la API de backend para autenticación, y obtener _token_ para usar la API, podrás usar todo lo visto hasta el momento, incluyendo hooks básicos (`useState`, `useEffect`) custom hooks (desarrollados por ti), el hook `useReducer`, la [API Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), y [Axios](https://blog.openreplay.com/integrating-axios-with-react-hooks/) (puedes ver cómo usarla sin usar patrón reductor, pero te recomendamos usar dicho patrón como vimos en clases, y cómo aparece explicado en el libro guía). Podrán usar _local storage_ y hooks para mantener el _token_ y enviarlo entre peticiones sucesivas. Si el _token_ no es válido, deben redirigir siempre al usuario a la página de login.
 2. [0.5] Cierre de sesión: Agregar esta funcionalidad a la barra de navegación en componente `TopNav`.
-3. [1.5] Implementar componente `TripsPage`, para desplegar una página que permita listar los viajes que ha realizado el usuario. Evidentemente, los viajes deben ser cargados desde el backend. Los viajes se deben desplegar de manera lo más similar al prototipo que ya han desarrollado. Si no prototiparon esto, entonces, hagan una vista que despliegue los viajes como pequeñas tarjetas que tengan el espacio necesario para desplegar una imagen. Dado que aún la aplicación no permite subidas de imágenes, agreguen [imágenes de tipo placeholder](https://www.google.com/search?q=placeholder%20image), y usen escalamiento proporcional con CSS para que aparezcan debidamente desplegadas en el dispositivo.
+3. [1.5] Implementar componente `TripsPage`, para desplegar una página que permita listar los viajes que ha realizado el usuario. Evidentemente, los viajes deben ser cargados desde el backend. Los viajes se deben desplegar de manera lo más similar al prototipo que ya han desarrollado. Si no prototiparon esto, entonces, hagan una vista que despliegue los viajes como pequeñas tarjetas que tengan el espacio necesario para desplegar una imagen. Dado que aún la aplicación no permite subidas de imágenes, pueden usar [skeleton de MUI](https://mui.com/material-ui/react-skeleton/) para simular el despliegue de imágenes.
 4. [1.0] Implementen `TripPage` para el despliegue (_show_) de un viaje en particular. Simulen el despliegue de imágenes que pueda verse correctamente horizontal y verticalmente.
 
 Para las cargas asíncronas de objetos desde el backend, hay un componente llamado `SpinnerOfDoom` que puede utilizarse para mostrar un _spinner_ (animación que da al usuario la sensación de que la carga está en progreso). Pueden modificar o reemplazar este componente si lo prefieren.
@@ -96,5 +104,6 @@ Deben realizar _commit_ de todo su trabajo al presente repositorio, generado des
 * Álvarez, C. (2023). ICC 4203 Aplicaciones Móviles, Clase 4. Disponible en Canvas.
 * Wieruch, R. (2023). The Road to Reach. Disponible en sitio del curso.
 * MUI - Getting Started (s.f.). Disponible en https://mui.com/material-ui/getting-started/
+* React Router (s.f.). Disponible en https://reactrouter.com/en/main 
 
 
